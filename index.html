@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script>
+
+        // Randomly generates a choice for the computer player
         function getComputerChoice() {
             let rockPaperScissors = ['Rock', 'Paper', 'Scissors'];
             let randomChoice = Math.floor(Math.random() * 3);
@@ -14,6 +16,7 @@
 
         }
 
+        // Plays through a round of 'Rock, Paper, Scissors'
         function playRound(computerChoice, playerChoice) {
             computerChoice = computerChoice.toLowerCase();
             playerChoice = playerChoice.toLowerCase();
@@ -43,6 +46,7 @@
             }
         }
 
+        // Plays through five rounds of 'Rock, Paper, Scissors'
         function game() {
             for (let i = 0; i < 5; i++) {
                 let computerSelection = getComputerChoice();
