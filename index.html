@@ -43,13 +43,33 @@
             results.textContent = playRound(playerChoice);
         });
 
+        // update and post new score if the player wins
         function playerWin() {
             playerScore++;
             score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
+
+            if (playerScore == 5) playerWins();
         }
 
+        // update and post new score if the player loses
         function playerLose() {
             computerScore++;
+            score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
+
+            if (computerScore == 5) computerWins();
+        }
+
+        function playerWins() {
+            alert("The Player wins! Play another round?");
+            computerScore = 0;
+            playerScore = 0;
+            score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
+        }
+
+        function computerWins() {
+            alert("The Computer wins! Play another round?");
+            computerScore = 0;
+            playerScore = 0;
             score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
         }
 
