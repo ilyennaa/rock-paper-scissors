@@ -12,31 +12,46 @@
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
+    <div class="score"></div>
     <div class="results"></div>
 
     <script>
+        var computerScore = 0, playerScore = 0;
+
         // query selection of the buttons
         const rockButton = document.querySelector('button#rock');
         const paperButton = document.querySelector('button#paper');
         const scissorsButton = document.querySelector('button#scissors');
+
+        const score = document.querySelector('.score');
         const results = document.querySelector('.results');
-        
+        score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
 
         // button event listeners
         rockButton.addEventListener("click", function() {
             let playerChoice = rockButton.getAttribute('id');
-            results.textContent += playRound(playerChoice);
+            results.textContent = playRound(playerChoice);
         });
 
         paperButton.addEventListener("click", function() {
             let playerChoice = paperButton.getAttribute('id');
-            results.textContent += playRound(playerChoice);
+            results.textContent = playRound(playerChoice);
         });
 
         scissorsButton.addEventListener("click", function() {
             let playerChoice = scissorsButton.getAttribute('id');
-            results.textContent += playRound(playerChoice);
+            results.textContent = playRound(playerChoice);
         });
+
+        function playerWin() {
+            playerScore++;
+            score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
+        }
+
+        function playerLose() {
+            computerScore++;
+            score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
+        }
 
         // Randomly generates a choice for the computer player
         function getComputerChoice() {
@@ -48,28 +63,33 @@
         // Plays through a round of 'Rock, Paper, Scissors'
         function playRound(playerChoice) {
             computerChoice = getComputerChoice().toLowerCase();
-            // computerChoice = computerChoice.toLowerCase();
 
             if (computerChoice == 'rock') {
                 if (playerChoice != 'paper') {
+                    playerLose();
                     return `You lose! ${computerChoice} beats ${playerChoice}!`;
                 } else {
+                    playerWin();
                     return `You win! ${playerChoice} beats ${computerChoice}!`;
                 }
             }
 
             if (computerChoice == 'paper') {
                 if (playerChoice != 'scissors') {
+                    playerLose();
                     return `You lose! ${computerChoice} beats ${playerChoice}!`;
                 } else {
+                    playerWin();
                     return `You win! ${playerChoice} beats ${computerChoice}!`;
                 }
             }
 
             if (computerChoice == 'scissors') {
                 if (playerChoice != 'rock') {
+                    playerLose();
                     return `You lose! ${computerChoice} beats ${playerChoice}!`;
                 } else {
+                    playerWin();
                     return `You win! ${playerChoice} beats ${computerChoice}!`;
                 }
             }
