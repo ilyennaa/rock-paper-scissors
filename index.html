@@ -44,7 +44,7 @@
         });
 
         // update and post new score if the player wins
-        function playerWin() {
+        function addPlayerPoint() {
             playerScore++;
             score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
 
@@ -52,7 +52,7 @@
         }
 
         // update and post new score if the player loses
-        function playerLose() {
+        function addComputerPoint() {
             computerScore++;
             score.textContent = `You: ${playerScore}  Computer: ${computerScore}`;
 
@@ -86,30 +86,30 @@
 
             if (computerChoice == 'rock') {
                 if (playerChoice != 'paper') {
-                    playerLose();
+                    addComputerPoint();
                     return `You lose! ${computerChoice} beats ${playerChoice}!`;
                 } else {
-                    playerWin();
+                    addPlayerPoint();
                     return `You win! ${playerChoice} beats ${computerChoice}!`;
                 }
             }
 
             if (computerChoice == 'paper') {
                 if (playerChoice != 'scissors') {
-                    playerLose();
+                    addComputerPoint();
                     return `You lose! ${computerChoice} beats ${playerChoice}!`;
                 } else {
-                    playerWin();
+                    addPlayerPoint();
                     return `You win! ${playerChoice} beats ${computerChoice}!`;
                 }
             }
 
             if (computerChoice == 'scissors') {
                 if (playerChoice != 'rock') {
-                    playerLose();
+                    addComputerPoint();
                     return `You lose! ${computerChoice} beats ${playerChoice}!`;
                 } else {
-                    playerWin();
+                    addPlayerPoint();
                     return `You win! ${playerChoice} beats ${computerChoice}!`;
                 }
             }
